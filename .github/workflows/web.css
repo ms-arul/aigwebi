@@ -1,0 +1,250 @@
+/* Body Styling for Dark Background */
+body {
+    background: url('a1.jpg') no-repeat center center/cover;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    backdrop-filter: blur(6px);
+    animation: fadeInBody 1s ease-in;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header Glass Effect */
+.header {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px 0;
+    border-radius: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+    width: 100vw;
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    letter-spacing: 1px;
+    animation: slideInHeader 0.8s ease-in-out;
+}
+
+@keyframes slideInHeader {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Styling */
+#registration-form {
+    width: 100%;
+    max-width: 550px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 22px;
+    padding: 40px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    animation: fadeInForm 1.2s ease-in;
+    z-index: 1;
+}
+
+#registration-form h2 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: center;
+}
+
+@keyframes fadeInForm {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Input Styling */
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    font-size: 17px;
+    color: #ffffff;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease-in-out;
+    margin-top: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #00c8ff;
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Label Styling */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #e6f0ff;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+/* Buttons */
+button {
+    flex: 1;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #22C1C3 0%, #7A2099 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #1DA1A3 0%, #6B1A87 100%);
+    transform: scale(1.06);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Reset Button Specific */
+.reset-btn {
+    background: linear-gradient(to right, #ff4e4e, #ff1a1a);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.reset-btn:hover {
+    background: linear-gradient(to right, #e03636, #cc0000);
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+/* "Other" Domain Field */
+#otherDomain {
+    display: none;
+    margin-top: 12px;
+    color: #ffffff;
+    font-size: 15px;
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    font-size: 17px;
+    color: #ffffff;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dropdown Styling */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: rgba(255, 255, 255, 0.08)
+        url("data:image/svg+xml;utf8,<svg fill='white' height='32' viewBox='0 0 24 24' width='32' xmlns='http://www.w3.org/2000/svg'><path d='M7 9l5 5 5-5'/></svg>")
+        no-repeat right 16px center;
+    background-size: 28px 28px;
+    padding: 14px 50px 14px 16px;
+    cursor: pointer;
+}
+
+/* Dropdown Hover Effect */
+select:hover {
+    border-color: #00c8ff;
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+option {
+    color: #000;
+    background-color: #fff;
+}
+
+/* Flex Layout for Rows */
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.row .input-group {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+    .header, #registration-form {
+        padding: 25px 20px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
+
+/* Custom Select Options (Optional Advanced Dropdown Styles) */
+.custom-select .options {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.custom-select .options.visible {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
+}
