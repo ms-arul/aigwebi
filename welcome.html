@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome - Webinar Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+  <div class="header">
+    St. Joseph College of Engineering
+    <span>Webinar Participation Portal</span>
+  </div>
+
+  <!-- Role Selection -->
+  <main class="welcome-container" id="roleSelection">
+    <h1>Hello There!</h1>
+    <p>Please select your role to continue with registration:</p>
+    <div class="role-buttons">
+      <a href="#" onclick="showForm('student')">I'm a Student</a>
+      <a href="#" onclick="showForm('staff')">I'm a Staff</a>
+    </div>
+  </main>
+
+  <!-- Sign In Form -->
+  <main class="form-container hidden" id="signForm">
+    <div class="back-arrow" onclick="goBack()">&#8592;</div>
+    <h2 id="formTitle">Sign In</h2>
+    <form>
+      <input type="email" placeholder="Email Address" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Proceed</button>
+    </form>
+    <p id="registerLink" class="hidden">
+      Not registered? <span onclick="showRegisterForm()">Register newly</span>
+    </p>
+  </main>
+
+  <!-- Student Registration Form (unused now, can be removed if not needed) -->
+  <main class="form-container hidden" id="studentRegisterForm">
+    <div class="back-arrow" onclick="showForm('student')">&#8592;</div>
+    <h2>Student Registration</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="password" placeholder="Create Password" required>
+      <button type="submit">Register</button>
+    </form>
+  </main>
+
+  <script>
+    function showForm(role) {
+      document.getElementById("roleSelection").classList.add("hidden");
+      document.getElementById("signForm").classList.remove("hidden");
+      document.getElementById("signForm").scrollIntoView();
+      document.getElementById("formTitle").innerText = role === 'student' ? 'Student Sign In' : 'Staff Sign In';
+      document.getElementById("registerLink").classList.toggle("hidden", role !== 'student');
+      document.getElementById("studentRegisterForm").classList.add("hidden");
+    }
+
+    function showRegisterForm() {
+      window.location.href = "web.html";
+    }
+
+    function goBack() {
+      document.getElementById("signForm").classList.add("hidden");
+      document.getElementById("studentRegisterForm").classList.add("hidden");
+      document.getElementById("roleSelection").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
