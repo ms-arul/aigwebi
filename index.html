@@ -1,20 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Password Protected Redirect</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      margin-top: 1rem;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background-color: #4facfe;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00c6ff;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Password Protected Page</h2>
+    <p>Please enter the password to continue:</p>
+    <input type="password" id="passwordInput" placeholder="Enter password" />
+    <button onclick="checkPassword()">Submit</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
+
   <script>
     function checkPassword() {
-      var password = prompt("Enter the password:");
+      var password = document.getElementById("passwordInput").value;
+      var errorMsg = document.getElementById("errorMsg");
+
       if (password === "2587") {
-        // Redirect only if the password is correct
         window.location.href = "welcome.html";
       } else {
-        alert("Incorrect password. You will not be redirected.");
+        errorMsg.textContent = "Incorrect password. Please try again.";
       }
     }
   </script>
-</head>
-<body onload="checkPassword()">
+
   <noscript>
     <p>This page requires JavaScript to function properly.</p>
   </noscript>
