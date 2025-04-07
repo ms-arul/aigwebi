@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Webinar Registration</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: url('a1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    .split-container {
+      display: flex;
+      min-height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    .left-side,
+    .right-side {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left-side {
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    .left-side h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 40px;
+    }
+
+    .left-side p {
+      font-size: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .right-side {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .signin-note {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .signin-note a {
+      color: #66ccff;
+      text-decoration: none;
+    }
+
+    .signin-note a:hover {
+      text-decoration: underline;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 17px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    select:invalid {
+      color: #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      background: linear-gradient(to right, #ff416c, #007cf0);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #ff4b2b, #1e90ff);
+    }
+
+    @media (max-width: 768px) {
+      .split-container {
+        flex-direction: column;
+      }
+
+      .left-side,
+      .right-side {
+        padding: 30px 20px;
+      }
+
+      .left-side h1 {
+        font-size: 30px;
+      }
+
+      .left-side p {
+        font-size: 16px;
+      }
+
+      .form-container {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="split-container">
+    <div class="left-side">
+      <div class="intro-text">
+        <h1>SJCE Webinar</h1>
+        <p>Empower your expertise with cutting-edge sessions across tech domains. Join us now!</p>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <div class="form-container">
+        <h2>Webinar Registration Form for Staff</h2>
+        <p class="signin-note">Already registered? <a href="welcome.html">Sign In here</a></p>
+
+        <form>
+          <div class="input-group">
+            <label for="staff-id">Staff ID</label>
+            <input type="text" id="staff-id" name="staff-id" placeholder="Enter your Staff ID" required />
+          </div>
+
+          <div class="input-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email-id</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter a password" required />
+          </div>
+
+          <div class="input-group">
+            <label for="domain">Domain</label>
+            <input type="text" id="domain" name="domain" placeholder="Eg: CSE, ECE" required />
+          </div>
+
+          <div class="input-group">
+            <label for="experience">Years of Experience</label>
+            <input type="number" id="experience" name="experience" placeholder="Eg: 5" required />
+          </div>
+
+          <div class="input-group">
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+              <option value="" disabled selected>Select your department</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="MECH">MECH</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required />
+          </div>
+
+          <div class="input-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Select your gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option> 
+            </select>
+          </div>
+
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
