@@ -1,85 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password Protected Redirect</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protected Access</title>
   <style>
     * {
       box-sizing: border-box;
+      font-family: 'Nunito', sans-serif;
     }
 
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff416c, #3a1c71);
       height: 100vh;
+      background: linear-gradient(135deg, #d63384, #6f42c1);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
     }
 
     .container {
-      background-color: rgba(0, 0, 0, 0.75);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       text-align: center;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    h2 {
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-      color: #ffb3c1;
-    }
-
-    p {
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #222;
       color: #fff;
+      width: 300px;
     }
 
-    button {
+    .container h2 {
+      margin-bottom: 0.5rem;
+      color: #ffafcc;
+    }
+
+    .container p {
+      margin-bottom: 1.5rem;
+      font-size: 14px;
+      color: #f8f9fa;
+    }
+
+    .container input {
       width: 100%;
-      padding: 12px;
-      margin-top: 1rem;
-      background-color: #ff416c;
-      color: white;
+      padding: 0.75rem;
+      margin-bottom: 1.2rem;
       border: none;
-      font-weight: bold;
-      font-size: 1rem;
       border-radius: 8px;
+      background-color: #1d1d1d;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .container button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff5e7e;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
-    button:hover {
-      background-color: #ff5e88;
+    .container button:hover {
+      background-color: #ff3c66;
     }
 
     .error {
-      color: #ff6b6b;
-      margin-top: 12px;
-      font-size: 0.9rem;
-    }
-
-    @media (hover: none) {
-      button:hover {
-        background-color: #ff416c; /* Disable hover on touch devices */
-      }
+      color: #ffb3b3;
+      font-size: 13px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
     }
   </style>
 </head>
@@ -87,26 +82,26 @@
   <div class="container">
     <h2>Protected Access</h2>
     <p>Enter the password to continue</p>
-    <input type="password" id="passwordInput" placeholder="Password">
+
+    <input type="password" id="passwordInput" placeholder="Password" required />
+    <div class="error" id="errorMsg">Incorrect password. Try again.</div>
+
     <button onclick="checkPassword()">Unlock</button>
-    <div class="error" id="errorMsg"></div>
   </div>
 
   <script>
     function checkPassword() {
-      const password = document.getElementById("passwordInput").value;
+      const enteredPassword = document.getElementById("passwordInput").value;
+      const correctPassword = "2587";
       const errorMsg = document.getElementById("errorMsg");
 
-      if (password === "2587") {
+      if (enteredPassword === correctPassword) {
+        // Redirect to welcome.html
         window.location.href = "welcome.html";
       } else {
-        errorMsg.textContent = "Incorrect password. Try again.";
+        errorMsg.style.display = "block";
       }
     }
   </script>
-
-  <noscript>
-    <p style="text-align:center; color:white;">This page requires JavaScript to function properly.</p>
-  </noscript>
 </body>
 </html>
