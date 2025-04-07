@@ -5,76 +5,89 @@
   <title>Password Protected Redirect</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #4facfe, #00f2fe);
+      margin: 0;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      background: linear-gradient(135deg, #ff416c, #3a1c71); /* red to blue gradient */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
     }
 
     .container {
-      background: white;
+      background-color: rgba(0, 0, 0, 0.75);
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      width: 300px;
       text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #ffb3c1;
     }
 
     input[type="password"] {
       padding: 10px;
       margin-top: 1rem;
       width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+      font-size: 1rem;
     }
 
     button {
       margin-top: 1rem;
       padding: 10px 20px;
-      background-color: #4facfe;
+      background-color: #ff416c;
       border: none;
-      color: white;
-      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #00c6ff;
+      background-color: #ff5e88;
     }
 
     .error {
-      color: red;
+      color: #ff6b6b;
       margin-top: 10px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Password Protected Page</h2>
-    <p>Please enter the password to continue:</p>
-    <input type="password" id="passwordInput" placeholder="Enter password" />
-    <button onclick="checkPassword()">Submit</button>
+    <h2>Protected Access</h2>
+    <p>Enter password to continue:</p>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="checkPassword()">Unlock</button>
     <div class="error" id="errorMsg"></div>
   </div>
 
   <script>
     function checkPassword() {
-      var password = document.getElementById("passwordInput").value;
-      var errorMsg = document.getElementById("errorMsg");
+      const password = document.getElementById("passwordInput").value;
+      const errorMsg = document.getElementById("errorMsg");
 
       if (password === "2587") {
         window.location.href = "welcome.html";
       } else {
-        errorMsg.textContent = "Incorrect password. Please try again.";
+        errorMsg.textContent = "Incorrect password. Try again.";
       }
     }
   </script>
 
   <noscript>
-    <p>This page requires JavaScript to function properly.</p>
+    <p style="color:white; text-align:center;">This page requires JavaScript to function properly.</p>
   </noscript>
 </body>
 </html>
