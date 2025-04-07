@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="refresh" content="0; URL='welcome.html'" />
-  <title>Redirecting...</title>
+  <title>Password Protected Redirect</title>
+  <script>
+    function checkPassword() {
+      var password = prompt("Enter the password:");
+      if (password === "2587") {
+        window.location.href = "welcome.html";
+      } else {
+        alert("Incorrect password.");
+      }
+    }
+  </script>
 </head>
-<body>
-  If you are not redirected automatically, <a href="welcome.html">click here</a>.
+<body onload="checkPassword()">
+  <p>If you are not redirected automatically, <a href="welcome.html">click here</a>.</p>
 </body>
 </html>
