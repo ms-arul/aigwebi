@@ -2,11 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>St. Joseph College of Engineering - Webinar Registration</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="web.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Webinar Registration | SJCE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background: url('a1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow: auto;
+    }
+
+    .split-left, .split-right {
+      width: 50%;
+      padding: 40px;
+    }
+
+    .split-left {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .split-left h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .split-left p {
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    .split-right {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      overflow-y: auto;
+    }
+
+    .header {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     .signin-link {
       text-align: center;
       margin-bottom: 20px;
@@ -22,39 +78,99 @@
     .signin-link a:hover {
       text-decoration: underline;
     }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      outline: none;
+    }
+
+    .input-group textarea {
+      resize: vertical;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4eaaff;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .button-group .reset-btn {
+      background-color: #ff4e4e;
+    }
+
+    .button-group button:hover {
+      background-color: #318ce7;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .split-left, .split-right {
+        width: 100%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Header with Glass Effect -->
-  <div class="header">
-    St. Joseph College of Engineering<br />
-    <span style="font-weight: normal; font-size: 18px;">Webinar Registration Form</span>
+
+  <!-- Left Side: Welcome Info -->
+  <div class="split-left">
+    <h1>Welcome to SJCE Webinar</h1>
+    <p>Register now to participate in exciting tech sessions and enhance your skills in various domains!</p>
   </div>
 
-  <!-- Form Section -->
-  <main>
+  <!-- Right Side: Registration Form -->
+  <div class="split-right">
+    <div class="header">Webinar Registration Form</div>
     <form id="registration-form">
-      <!-- Sign In Link (Moved here) -->
       <p class="signin-link">
         Already have an ID? <a href="welcome.html">Sign In here</a>
       </p>
 
-      <h2>Student Webinar Registration</h2>
-
       <div class="input-group">
         <label for="roll-number">Roll Number</label>
-        <input type="text" id="roll-number" name="roll-number" required placeholder="Enter your roll number" />
+        <input type="text" id="roll-number" name="roll-number" required placeholder="Enter your roll number"/>
       </div>
 
       <div class="input-group">
         <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required placeholder="Enter your full name" />
-        <small class="error" id="name-error"></small>
+        <input type="text" id="name" name="name" required placeholder="Enter your full name"/>
       </div>
 
       <div class="input-group">
         <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob" required />
+        <input type="date" id="dob" name="dob" required/>
       </div>
 
       <div class="input-group">
@@ -72,62 +188,60 @@
         <label for="domain">Domain</label>
         <select id="domain" name="domain" required onchange="handleDomainChange()">
           <option value="">Select your domain</option>
-          <option value="1">Full Stack</option>
-          <option value="2">Java</option>
-          <option value="3">UI & UX</option>
-          <option value="4">Python</option>
-          <option value="other">Other</option>
+          <option value="Full Stack">Full Stack</option>
+          <option value="Java">Java</option>
+          <option value="UI & UX">UI & UX</option>
+          <option value="Python">Python</option>
+          <option value="Other">Other</option>
         </select>
-        <input type="text" id="otherDomain" name="otherDomain" placeholder="Specify your domain" />
+        <input type="text" id="otherDomain" name="otherDomain" placeholder="Specify your domain" style="display:none"/>
       </div>
 
       <div class="input-group">
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" />
-        <small class="error" id="phone-error"></small>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit phone number"/>
       </div>
 
       <div class="input-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="Enter your email address" />
+        <input type="email" id="email" name="email" required placeholder="Enter your email address"/>
       </div>
 
       <div class="input-group">
         <label for="department">Department</label>
         <select id="department" name="department" required>
           <option value="">Select Department</option>
-          <option value="CSE">Computer Science and Engineering (CSE)</option>
-          <option value="ECE">Electronics and Communication Engineering (ECE)</option>
-          <option value="IT">Information Technology (IT)</option>
-          <option value="MECH">Mechanical Engineering (MECH)</option>
-          <option value="AIDS">Artificial Intelligence and Data Science (AIDS)</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="IT">IT</option>
+          <option value="MECH">MECH</option>
+          <option value="AIDS">AIDS</option>
         </select>
       </div>
 
       <div class="input-group">
         <label for="interests">Interests</label>
-        <textarea id="interests" name="interests" rows="3" placeholder="Share your interests..."></textarea>
+        <textarea id="interests" name="interests" rows="2" placeholder="Share your interests..."></textarea>
       </div>
 
       <div class="input-group">
         <label for="extracurricular">Extracurricular Activities</label>
-        <textarea id="extracurricular" name="extracurricular" rows="3" placeholder="Mention any extracurricular activities..."></textarea>
+        <textarea id="extracurricular" name="extracurricular" rows="2" placeholder="Mention any extracurricular activities..."></textarea>
       </div>
 
-      <!-- Buttons -->
       <div class="button-group">
         <button type="submit">Register</button>
         <button type="reset" class="reset-btn">Reset</button>
       </div>
     </form>
-  </main>
+  </div>
 
   <!-- JavaScript -->
   <script>
     function handleDomainChange() {
       const select = document.getElementById("domain");
       const otherInput = document.getElementById("otherDomain");
-      if (select.value === "other") {
+      if (select.value === "Other") {
         otherInput.style.display = "block";
       } else {
         otherInput.style.display = "none";
@@ -135,18 +249,14 @@
       }
     }
 
-    // Initialize "Other Domain" field visibility
     document.addEventListener("DOMContentLoaded", () => {
       handleDomainChange();
     });
 
-    // Prevent default form submission
     document.getElementById("registration-form").addEventListener("submit", function (e) {
       e.preventDefault();
       alert("Form submitted successfully!");
     });
   </script>
-
-  <script src="web.js"></script> <!-- Optional external JS -->
 </body>
 </html>
