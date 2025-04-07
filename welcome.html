@@ -27,17 +27,25 @@
   <main class="form-container hidden" id="signForm">
     <div class="back-arrow" onclick="goBack()">&#8592;</div>
     <h2 id="formTitle">Sign In</h2>
+
+    <!-- Student registration link -->
+    <p id="registerLink" class="hidden">
+      Not registered? <a href="web.html">Register newly</a>
+    </p>
+
+    <!-- Staff registration link -->
+    <p id="staffRegisterLink" class="hidden">
+      Not registered? <a href="staffreg.html">Register newly</a>
+    </p>
+
     <form>
       <input type="email" placeholder="Email Address" required>
       <input type="password" placeholder="Password" required>
       <button type="submit">Proceed</button>
     </form>
-    <p id="registerLink" class="hidden">
-      Not registered? <span onclick="showRegisterForm()">Register newly</span>
-    </p>
   </main>
 
-  <!-- Student Registration Form (unused now, can be removed if not needed) -->
+  <!-- Student Registration Form (optional, can be removed if unused) -->
   <main class="form-container hidden" id="studentRegisterForm">
     <div class="back-arrow" onclick="showForm('student')">&#8592;</div>
     <h2>Student Registration</h2>
@@ -49,18 +57,19 @@
     </form>
   </main>
 
+  <!-- Script -->
   <script>
     function showForm(role) {
       document.getElementById("roleSelection").classList.add("hidden");
       document.getElementById("signForm").classList.remove("hidden");
       document.getElementById("signForm").scrollIntoView();
-      document.getElementById("formTitle").innerText = role === 'student' ? 'Student Sign In' : 'Staff Sign In';
-      document.getElementById("registerLink").classList.toggle("hidden", role !== 'student');
-      document.getElementById("studentRegisterForm").classList.add("hidden");
-    }
 
-    function showRegisterForm() {
-      window.location.href = "web.html";
+      const isStudent = role === 'student';
+      document.getElementById("formTitle").innerText = isStudent ? 'Student Sign In' : 'Staff Sign In';
+      document.getElementById("registerLink").classList.toggle("hidden", !isStudent);
+      document.getElementById("staffRegisterLink").classList.toggle("hidden", isStudent);
+
+      document.getElementById("studentRegisterForm").classList.add("hidden");
     }
 
     function goBack() {
