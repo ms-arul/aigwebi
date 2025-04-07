@@ -1,6 +1,7 @@
 /* Body Styling for Dark Background */
 body {
     background: url('a1.jpg') no-repeat center center/cover;
+    background-attachment: fixed; /* Makes the background image static */
     margin: 0;
     font-family: 'Nunito', sans-serif;
     display: flex;
@@ -46,11 +47,11 @@ body::before {
 /* Registration Form Wrapper */
 #registration-form {
     width: 90%;
-    max-width: 800px; /* Increased max width for desktop */
+    max-width: 800px;
     background: rgba(255, 255, 255, 0.06);
     border-radius: 22px;
-    padding: 50px 50px; /* Added more horizontal padding */
-    margin: 40px auto; /* Center alignment */
+    padding: 50px 50px;
+    margin: 40px auto;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
     text-align: center;
     backdrop-filter: blur(12px);
@@ -135,14 +136,14 @@ select {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px; /* Increased gap */
+    gap: 20px;
     margin-top: 35px;
 }
 
 button {
     flex: 1 1 48%;
-    padding: 18px; /* Increased padding */
-    font-size: 18px; /* Slightly larger font */
+    padding: 18px;
+    font-size: 18px;
     font-weight: bold;
     background: linear-gradient(90deg, #22C1C3 0%, #7A2099 100%);
     color: white;
@@ -151,7 +152,7 @@ button {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
-    min-width: 200px; /* Minimum width for better balance */
+    min-width: 200px;
 }
 
 button:hover {
