@@ -6,14 +6,17 @@
     function checkPassword() {
       var password = prompt("Enter the password:");
       if (password === "2587") {
+        // Redirect only if the password is correct
         window.location.href = "welcome.html";
       } else {
-        alert("Incorrect password.");
+        alert("Incorrect password. You will not be redirected.");
       }
     }
   </script>
 </head>
 <body onload="checkPassword()">
-  <p>If you are not redirected automatically, <a href="welcome.html">click here</a>.</p>
+  <noscript>
+    <p>This page requires JavaScript to function properly.</p>
+  </noscript>
 </body>
 </html>
