@@ -1,3 +1,4 @@
+
 /* Body Styling for Dark Background */
 body {
     background: url('a1.jpg') no-repeat center center/cover;
@@ -51,8 +52,8 @@ body::before {
 
 /* Form Styling */
 #registration-form {
-    width: 100%;
-    max-width: 550px;
+    width: 90%;
+    max-width: 700px;
     background: rgba(255, 255, 255, 0.06);
     border-radius: 22px;
     padding: 40px;
@@ -196,7 +197,6 @@ select {
     cursor: pointer;
 }
 
-/* Dropdown Hover Effect */
 select:hover {
     border-color: #00c8ff;
     box-shadow: 0 0 12px rgba(0, 200, 255, 0.3);
@@ -233,6 +233,13 @@ option {
     .row {
         flex-direction: column;
     }
+}
+
+/* Optional wider layout for large screens */
+@media screen and (min-width: 1024px) {
+  #registration-form {
+    padding: 50px 60px;
+  }
 }
 
 /* Custom Select Options (Optional Advanced Dropdown Styles) */
