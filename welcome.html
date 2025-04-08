@@ -38,14 +38,14 @@
       Not registered? <a href="staffreg.html">Register newly</a>
     </p>
 
-    <form>
+    <form id="loginForm">
       <input type="email" placeholder="Email Address" required>
       <input type="password" placeholder="Password" required>
       <button type="submit">Proceed</button>
     </form>
   </main>
 
-  <!-- Student Registration Form (optional, can be removed if unused) -->
+  <!-- Student Registration Form (optional) -->
   <main class="form-container hidden" id="studentRegisterForm">
     <div class="back-arrow" onclick="showForm('student')">&#8592;</div>
     <h2>Student Registration</h2>
@@ -59,7 +59,11 @@
 
   <!-- Script -->
   <script>
+    let currentRole = ''; // To keep track of selected role
+
     function showForm(role) {
+      currentRole = role;
+
       document.getElementById("roleSelection").classList.add("hidden");
       document.getElementById("signForm").classList.remove("hidden");
       document.getElementById("signForm").scrollIntoView();
@@ -77,6 +81,19 @@
       document.getElementById("studentRegisterForm").classList.add("hidden");
       document.getElementById("roleSelection").classList.remove("hidden");
     }
+
+    // Handle form submission and redirect
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent default form action
+
+      // Optional: validate login credentials here
+
+      if (currentRole === 'student') {
+        window.location.href = "studenthome.html";
+      } else if (currentRole === 'staff') {
+        window.location.href = "staffhome.html"; // Update or remove if not needed
+      }
+    });
   </script>
 </body>
 </html>
