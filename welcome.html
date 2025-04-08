@@ -1,175 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome - Webinar Registration</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="welcome.css">
-  <style>
-    body {
-      font-family: 'Nunito', sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
-    .header {
-      background-color: #2a2a72;
-      color: white;
-      text-align: center;
-      padding: 1rem 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    .header span {
-      display: block;
-      font-size: 1rem;
-      font-weight: 400;
-    }
-    .welcome-container, .form-container {
-      max-width: 400px;
-      margin: 3rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .hidden {
-      display: none;
-    }
-    .role-buttons a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      background-color: #2a2a72;
-      color: white;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .role-buttons a:hover {
-      background-color: #1a1a50;
-    }
-    input {
-      display: block;
-      width: 100%;
-      margin: 0.75rem 0;
-      padding: 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    button {
-      width: 100%;
-      padding: 0.75rem;
-      background-color: #2a2a72;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: #1a1a50;
-    }
-    .back-arrow {
-      cursor: pointer;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #2a2a72;
-      display: inline-block;
-    }
-    p a {
-      color: #2a2a72;
-    }
-  </style>
-</head>
-<body>
+<!-- Enhanced Script -->
+<script>
+  let currentRole = ''; // To keep track of selected role
 
-  <header class="header" role="banner">
-    St. Joseph College of Engineering
-    <span>Webinar Participation Portal</span>
-  </header>
+  function showForm(role) {
+    currentRole = role;
 
-  <!-- Role Selection -->
-  <main class="welcome-container" id="roleSelection" role="main">
-    <h1>Hello There!</h1>
-    <p>Please select your role to continue with registration:</p>
-    <div class="role-buttons">
-      <a href="#" onclick="showForm('student')" aria-label="Student Login">I'm a Student</a>
-      <a href="#" onclick="showForm('staff')" aria-label="Staff Login">I'm a Staff</a>
-    </div>
-  </main>
+    // Hide role selection and show login form
+    document.getElementById("roleSelection").classList.add("hidden");
+    document.getElementById("signForm").classList.remove("hidden");
+    document.getElementById("signForm").scrollIntoView({ behavior: 'smooth' });
 
-  <!-- Sign In Form -->
-  <main class="form-container hidden" id="signForm">
-    <div class="back-arrow" onclick="goBack()" aria-label="Go Back">&#8592; Back</div>
-    <h2 id="formTitle">Sign In</h2>
+    // Toggle title and registration links
+    const isStudent = role === 'student';
+    document.getElementById("formTitle").innerText = isStudent ? 'Student Sign In' : 'Staff Sign In';
+    document.getElementById("registerLink").classList.toggle("hidden", !isStudent);
+    document.getElementById("staffRegisterLink").classList.toggle("hidden", isStudent);
 
-    <p id="registerLink" class="hidden">
-      Not registered? <a href="web.html">Register newly</a>
-    </p>
+    // Hide student register form if previously open
+    document.getElementById("studentRegisterForm").classList.add("hidden");
+  }
 
-    <p id="staffRegisterLink" class="hidden">
-      Not registered? <a href="staffreg.html">Register newly</a>
-    </p>
+  function goBack() {
+    // Go back to role selection
+    document.getElementById("signForm").classList.add("hidden");
+    document.getElementById("studentRegisterForm").classList.add("hidden");
+    document.getElementById("roleSelection").classList.remove("hidden");
+  }
 
-    <form id="loginForm" autocomplete="off">
-      <input type="email" name="email" id="email" placeholder="Email Address" required>
-      <input type="password" name="password" id="password" placeholder="Password" required autocomplete="off">
-      <button type="submit">Proceed</button>
-    </form>
-  </main>
+  // Handle login form submission
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  <!-- Student Registration Form -->
-  <main class="form-container hidden" id="studentRegisterForm">
-    <div class="back-arrow" onclick="showForm('student')">&#8592; Back</div>
-    <h2>Student Registration</h2>
-    <form autocomplete="off">
-      <input type="text" name="studentName" placeholder="Your Name" required>
-      <input type="email" name="studentEmail" placeholder="Email Address" required>
-      <input type="password" name="studentPassword" placeholder="Create Password" required autocomplete="off">
-      <button type="submit">Register</button>
-    </form>
-  </main>
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-  <!-- Script -->
-  <script>
-    let currentRole = ''; // To keep track of selected role
-
-    function showForm(role) {
-      currentRole = role;
-
-      document.getElementById("roleSelection").classList.add("hidden");
-      document.getElementById("signForm").classList.remove("hidden");
-      document.getElementById("signForm").scrollIntoView({ behavior: 'smooth' });
-
-      const isStudent = role === 'student';
-      document.getElementById("formTitle").innerText = isStudent ? 'Student Sign In' : 'Staff Sign In';
-      document.getElementById("registerLink").classList.toggle("hidden", !isStudent);
-      document.getElementById("staffRegisterLink").classList.toggle("hidden", isStudent);
-
-      document.getElementById("studentRegisterForm").classList.add("hidden");
-    }
-
-    function goBack() {
-      document.getElementById("signForm").classList.add("hidden");
-      document.getElementById("studentRegisterForm").classList.add("hidden");
-      document.getElementById("roleSelection").classList.remove("hidden");
-    }
-
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      // You can replace this with actual backend auth logic
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      if (email && password) {
-        window.location.href = currentRole === 'student' ? "studenthome.html";
+    if (email && password) {
+      // Redirect based on role
+      if (currentRole === 'student') {
+        window.location.href = "studenthome.html";
+      } else if (currentRole === 'staff') {
+        window.location.href = "staffhome.html";
       }
-    });
-  </script>
-</body>
-</html>
+    } else {
+      alert("Please enter both email and password.");
+    }
+  });
+</script>
