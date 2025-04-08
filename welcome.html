@@ -29,18 +29,17 @@
     <h2 id="formTitle">Sign In</h2>
 
     <p id="registerLink" class="hidden">
-      Not registered? <a href="web.html">Register newly</a>
+      Not registered? <a href="./web.html">Register newly</a>
     </p>
     <p id="staffRegisterLink" class="hidden">
-      Not registered? <a href="staffreg.html">Register newly</a>
+      Not registered? <a href="./staffreg.html">Register newly</a>
     </p>
 
-    <form id="loginForm" onsubmit="event.preventDefault(); window.location.href='studenthome.html';">
+    <form id="loginForm">
       <input type="email" placeholder="Email Address" required>
       <input type="password" placeholder="Password" required>
       <button type="submit">Proceed</button>
     </form>
-    
   </main>
 
   <!-- Optional: Student Registration Form -->
@@ -61,8 +60,7 @@
 
     function showForm(role) {
       currentRole = role;
-      localStorage.setItem("selectedRole", role); // Persist role if needed
-      console.log("Role selected:", currentRole);
+      localStorage.setItem("selectedRole", role);
 
       document.getElementById("roleSelection").classList.add("hidden");
       document.getElementById("signForm").classList.remove("hidden");
@@ -72,8 +70,6 @@
       document.getElementById("formTitle").innerText = isStudent ? 'Student Sign In' : 'Staff Sign In';
       document.getElementById("registerLink").classList.toggle("hidden", !isStudent);
       document.getElementById("staffRegisterLink").classList.toggle("hidden", isStudent);
-
-      document.getElementById("studentRegisterForm").classList.add("hidden");
     }
 
     function goBack() {
@@ -81,33 +77,26 @@
       localStorage.removeItem("selectedRole");
 
       document.getElementById("signForm").classList.add("hidden");
-      document.getElementById("studentRegisterForm").classList.add("hidden");
       document.getElementById("roleSelection").classList.remove("hidden");
     }
 
     document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Use currentRole or fallback to localStorage
       let role = currentRole || localStorage.getItem("selectedRole");
-      console.log("Form submitted for role:", role);
 
       if (!role) {
         alert("Please select your role first.");
         return;
       }
 
-      // Optional: Add real validation here
-
+      // Simulate login success and redirect for GitHub Pages
       if (role === 'student') {
-        alert("Redirecting to student portal...");
-        window.location.href = "studenthome.html";
+        window.location.href = "./studenthome.html";
       } else if (role === 'staff') {
-        alert("Redirecting to staff portal...");
-        window.location.href = "staffhome.html";
+        window.location.href = "./staffhome.html";
       }
     });
   </script>
- 
 </body>
 </html>
